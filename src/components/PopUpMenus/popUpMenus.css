@@ -1,0 +1,133 @@
+.popUpMenu {
+    background: var(--colorBlackOpacity50);
+    backdrop-filter: blur(var(--blurLevel5p));
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 20;
+    position: relative;
+}
+
+.popUpMenu__closeMenuBtn {
+    background: var(--colorWhiteOpacity70);
+    color: var(--colorBlack);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    height: 50px;
+
+    border: none;
+    outline: none;
+
+    border-radius: 50%;
+    box-shadow: var(--shadow3);
+
+    cursor: pointer;
+
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.popUpMenu__discardMenu__screen {
+    background: var(--colorBlackOpacity50);
+    backdrop-filter: blur(var(--blurLevel5p));
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 21;
+    position: absolute;
+}
+
+.popUpMenu__discardMenu {
+    background: var(--colorWhite);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 230px;
+    height: 100px;
+
+    border-radius: var(--borderRadius5);
+    box-shadow: var(--shadow3);
+
+    z-index: 22;
+
+    overflow: hidden;
+    position: absolute;
+}
+
+.popUpMenu__discardMenu__title {
+    color: var(--colorBlack);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: calc(100% / 2);
+
+    padding: 0;
+    margin: 0;
+
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.popUpMenu__discardMenu__discardAction {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    width: 100%;
+    height: calc(100% / 2);
+
+    border: 1px solid var(--colorGray7);
+}
+
+.popUpMenu__discardMenu__actionBtn {
+    background: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: calc(100% / 2);
+    height: 100%;
+
+    border: none;
+    outline: none;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+.discardBtn {
+    color: var(--color2);
+}
+
+.keepBtn {
+    color: var(--colorBlack);
+}
+
+.popUpMenu__discardMenu__actionBtn:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,144 @@
+.mentionWordList {
+    background: var(--colorWhite);
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    width: 250px;
+    min-height: 50px;
+    max-height: 250px;
+
+    padding: 0;
+    margin: 0;
+
+    border: 1px solid var(--colorGray7);
+    border-radius: var(--borderRadius5);
+    box-shadow: var(--shadow1);
+
+    z-index: 3;
+    position: absolute;
+    top: 80%;
+
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.mentionWordList__alertMode {
+    justify-content: center;
+}
+
+.mentionWordList__listMode {
+    justify-content: flex-start;
+}
+
+.mentionWordList__loadingContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+}
+
+.mentionWordList__error {
+    color: var(--color2);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+
+    width: max-content;
+    height: max-content;
+}
+
+.mentionWordList__profileContainer {
+    background: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-shrink: 0;
+    gap: 10px;
+
+    width: 100%;
+    height: 65px;
+
+    padding: 0;
+    margin: 0;
+    
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+}
+
+.mentionWordList__profileContainer:hover {
+    background: var(--colorGray7);
+}
+
+.mentionWordList__profileImageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+    box-shadow: var(--shadow5);
+
+    overflow: hidden;
+}
+
+.mentionWordList__profileImageContainer > img {
+    width: 100%;
+    height: 100%;
+
+    object-position: center;
+    object-fit: cover;
+}
+
+.mentionWordList__profileInfoContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+    width: calc(100% - 80px);
+    height: 100%;
+}
+
+.mentionWordList__profileName {
+    color: var(--colorBlack);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 5px;
+
+    padding: 0;
+    margin: 0;
+
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.mentionWordList__profileUsername {
+    color: var(--color1);
+
+    padding: 0;
+    margin: 0;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.mentionWordList__profileContainer:hover .mentionWordList__profileUsername {
+    text-decoration: underline;
+}

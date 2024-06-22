@@ -1,0 +1,37 @@
+.postContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-shrink: 0;
+
+    width: 100%;
+    height: max-content;
+}
+
+.postContent__textContent {
+    color: var(--colorBlack);
+
+    width: calc(100% - 20px);
+    height: max-content;
+
+    padding: 10px;
+    margin: 0;
+
+    font-size: 16px;
+    font-weight: 500;
+    text-align: justify;
+}
+
+.postContent__attachmentContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: calc(100% - 20px);
+    height: max-content;
+
+    padding: 10px;
+    margin: 0;
+}

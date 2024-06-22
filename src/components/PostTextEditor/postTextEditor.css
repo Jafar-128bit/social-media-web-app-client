@@ -1,0 +1,47 @@
+.postEditor {
+    color: var(--colorBlack);
+
+    width: calc(100% - 10px);
+    min-height: 20px;
+
+    padding: 0;
+    margin: 5px 0;
+
+    border: none;
+    outline: none;
+
+    border-radius: var(--borderRadius3);
+
+    font-size: 16px;
+    font-weight: 500;
+    text-align: justify;
+
+    overflow: hidden;
+    overflow-y: auto;
+
+    position: relative;
+}
+
+.postEditor__markdownText__mention,
+.postEditor__markdownText__hashtag {
+    width: max-content;
+    height: max-content;
+
+    margin: 0 3px 0 0;
+}
+
+.postEditor__markdownText__mention {
+    color: var(--color1);
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.postEditor__markdownText__hashtag {
+    color: var(--color1);
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
