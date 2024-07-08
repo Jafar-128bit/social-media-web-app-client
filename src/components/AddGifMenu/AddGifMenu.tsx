@@ -8,6 +8,8 @@ import {
 import {GiphyFetch} from '@giphy/js-fetch-api'
 import {ChangeEvent, SyntheticEvent, useState} from "react";
 import {useDispatch} from "react-redux";
+import {useLocation} from 'react-router-dom';
+
 import {toggleMenu} from "../../store/slices/popUpSlices";
 import {addGifAttachment} from "../../store/slices/gifAttachmentSlice";
 import {GifFileType} from "../../type/type";
@@ -17,6 +19,7 @@ const gf = new GiphyFetch('Ykl4Oepbeo5FKXDcX8oImZj7blSh5mBS');
 
 const AddGifMenu = () => {
     const dispatch = useDispatch();
+    const location = useLocation().pathname.split("/")[1];
 
     const [searchKey, setSearchKey] = useState<string>('');
     const fetchGifsSearch = (offset: number) => gf.search(searchKey, {offset, limit: 8});
@@ -31,7 +34,11 @@ const AddGifMenu = () => {
     };
     const handleCloseGifMenu = (): void => {
         dispatch(toggleMenu({actionName: "addGif", actionArgument: false}));
-        dispatch(toggleMenu({actionName: "addCommentOnPost", actionArgument: true}));
+        if (location !== "create") {
+            dispatch(toggleMenu({actionName: "addCommentOnPost", actionArgument: true}));
+        } else {
+            dispatch(toggleMenu({actionName: "addNewPostMenu", actionArgument: true}));
+        }
     };
     const handleSetGifFile = async (gif: any, e: SyntheticEvent<HTMLElement, Event>): Promise<void> => {
         e.preventDefault();
@@ -43,7 +50,11 @@ const AddGifMenu = () => {
             altText: gif.alt_text,
         }));
         dispatch(toggleMenu({actionName: 'addGif', actionArgument: false}));
-        dispatch(toggleMenu({actionName: 'addCommentOnPost', actionArgument: true}));
+        if (location !== "create") {
+            dispatch(toggleMenu({actionName: "addCommentOnPost", actionArgument: true}));
+        } else {
+            dispatch(toggleMenu({actionName: "addNewPostMenu", actionArgument: true}));
+        }
     };
 
     return <div className="addGifMenu">

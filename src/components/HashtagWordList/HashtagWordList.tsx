@@ -1,7 +1,6 @@
 import './hashtagWordList.css';
-import {useCallback, useEffect, useState} from "react";
 import {HashtagWithCounts} from "../../type/type";
-import {fetchHashtagData} from "../../utils/utils";
+import useFilterData from "../../hooks/useFilterData";
 
 type PropSpecialWordType = {
     searchWord: string;
@@ -9,43 +8,10 @@ type PropSpecialWordType = {
 }
 
 const HashtagWordList = ({searchWord, handleSelectSuggestion}: PropSpecialWordType) => {
-    const [filteredHashtagData, setFilteredHashtagData] = useState<HashtagWithCounts[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
-
-    const debouncedSearch = useCallback(async (term: string) => {
-        try {
-            setLoading(true);
-            const data = await fetchHashtagData(term);
-            setFilteredHashtagData(data);
-            setLoading(false);
-            setError('');
-        } catch (error: any) {
-            if (error.message === "No user found!") setError('User not found');
-            else setError('Failed to fetch profile data');
-            setLoading(false);
-        }
-    }, []);
-    const fetchData = async () => {
-        try {
-            setLoading(true);
-            await debouncedSearch('');
-        } catch (error: any) {
-            if (error.message === "No user found!") setError('User not found');
-            else setError('Failed to fetch profile data');
-            setLoading(false);
-        }
-    };
-
-    useEffect(() => {
-        fetchData();
-    }, []);
-    useEffect(() => {
-        debouncedSearch(searchWord);
-    }, [searchWord, debouncedSearch]);
+    const {filteredHashtagData, loading, error} = useFilterData(searchWord, "hashTag");
 
     return <div className="hashtagWordList noScroll">
-        {filteredHashtagData.map((hashtag: HashtagWithCounts, index: number) => <button
+        {filteredHashtagData?.map((hashtag: HashtagWithCounts, index: number) => <button
             key={index}
             className="hashtagWordList__hashtagContainer"
             onClick={() => handleSelectSuggestion(`${hashtag.hashtag_text} `, "hashtag")}

@@ -2,7 +2,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {PopUpMenuType} from "../../type/type";
 
 type popActionType = {
-    actionName: "popUpMenuContainer" | "profilePreview" | "addCommentOnPost" | "addCommentOnComment"
+    actionName: "popUpMenuContainer" | "profilePreview" | "addNewPostMenu" | "addCommentOnPost" | "addCommentOnComment"
         | "repostWithQuote" | "reportProblem" | "reportPost" | "blockProfile" | "editComment" | "addGif"
         | "editProfile" | "editName" | "editDescription" | "editLink" | "showProfilePicture"
         | "deletePost" | "deleteComment" | "whoCanReply";
@@ -18,6 +18,7 @@ type popActionOptionType = {
 const initialState: PopUpMenuType = {
     popUpMenuContainer: false,
     profilePreviewMenu: false,
+    addNewPostMenu: false,
     addCommentOnPostMenu: false,
     addCommentOnCommentMenu: false,
     addAltTextMenu: {isOpen: false, fileId: ""},
@@ -49,6 +50,9 @@ const popUpSlice = createSlice({
             switch (actionName) {
                 case "profilePreview":
                     state.profilePreviewMenu = actionArgument;
+                    break;
+                case "addNewPostMenu":
+                    state.addNewPostMenu = actionArgument;
                     break;
                 case "addCommentOnPost":
                     state.addCommentOnPostMenu = actionArgument;

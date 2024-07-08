@@ -24,6 +24,7 @@
     --colorGray5: #959595;
     --colorGray6: #b2b2b2;
     --colorGray7: #ededed;
+    --colorGray8: #f5f5f5;
 
     --color1: #364aff;
     --color2: #ff3636;
@@ -38,6 +39,7 @@
     --borderRadius3: 6px;
     --borderRadius4: 8px;
     --borderRadius5: 10px;
+    --borderRadius6: 18px;
 
     --shadow1: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
     --shadow2: rgba(149, 157, 165, 0.2) 0px 8px 24px;

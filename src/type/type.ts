@@ -2,7 +2,8 @@ import {JSX} from 'react';
 
 export interface NavbarOptionDataType {
     icon: JSX.Element;
-    url: string;
+    url: string | null;
+    type: "url" | "button";
 }
 
 export interface NavbarMenuOptionDataType {
@@ -18,6 +19,7 @@ interface AltTextMenuOptionsType {
 export interface PopUpMenuType {
     popUpMenuContainer: boolean;
     profilePreviewMenu: boolean;
+    addNewPostMenu: boolean;
     addCommentOnPostMenu: boolean;
     addCommentOnCommentMenu: boolean;
     addAltTextMenu: AltTextMenuOptionsType;

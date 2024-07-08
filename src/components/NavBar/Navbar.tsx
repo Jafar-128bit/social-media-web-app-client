@@ -21,22 +21,31 @@ import {NavbarMenuOptionDataType, NavbarOptionDataType} from "../../type/type";
 import {useNavigate, useLocation} from 'react-router-dom';
 import {motion} from 'framer-motion';
 import {JSX, useState} from 'react';
+import {toggleMenu, togglePopMenuContainer} from "../../store/slices/popUpSlices";
+import {useDispatch} from "react-redux";
 
 type NavOptionsPropType = {
     icon: JSX.Element;
-    url: string;
+    url: string | null;
     currentLocation?: string;
-    actionCallback: ((url: string) => void);
+    navigationAction: ((url: string) => void);
+    buttonAction?: () => void;
 }
 
-const NavOptions = ({icon, url, currentLocation, actionCallback}: NavOptionsPropType): JSX.Element => {
+const NavOptions = ({icon, url, currentLocation, navigationAction, buttonAction}: NavOptionsPropType): JSX.Element => {
     /* TODO: Add notification indicator */
     const [isHover, setIsHover] = useState<boolean>(false);
+    const handleButtonClick = () => {
+        if (url) navigationAction(url);
+        else {
+            if (buttonAction) buttonAction();
+        }
+    }
 
     return <button
         type="button"
         className="navbar__navOptions"
-        onClick={() => actionCallback(url)}
+        onClick={handleButtonClick}
         onMouseOver={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
         style={{color: url === currentLocation ? "var(--colorBlack)" : "var(--colorGray5)"}}
@@ -57,29 +66,35 @@ const NavOptions = ({icon, url, currentLocation, actionCallback}: NavOptionsProp
 
 const Navbar = (): JSX.Element => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const currentLocation: string = useLocation().pathname;
 
     const navbarOptionData: NavbarOptionDataType[] = [
         {
             icon: <HomeRoundedIcon style={navbarOptionIconStyle}/>,
-            url: "/"
+            url: "/",
+            type: "url",
         },
         {
             icon: <SearchRoundedIcon style={navbarOptionIconStyle}/>,
-            url: "/search"
+            url: "/search",
+            type: "url",
         },
         {
             icon: <AddCircleOutlineRoundedIcon style={navbarOptionIconStyle}/>,
-            url: "/create"
+            url: null,
+            type: "button",
         },
         {
             icon: currentLocation === "/notification" ? <FavoriteRoundedIcon style={navbarOptionIconStyle}/>
                 : <FavoriteBorderRoundedIcon style={navbarOptionIconStyle}/>,
-            url: "/notification"
+            url: "/notification",
+            type: "url",
         },
         {
             icon: <Person2RoundedIcon style={navbarOptionIconStyle}/>,
-            url: "/profile"
+            url: "/profile",
+            type: "url",
         },
     ];
     const menuOptionData: NavbarMenuOptionDataType[] = [
@@ -101,6 +116,10 @@ const Navbar = (): JSX.Element => {
         if (url === "back") navigate(-1);
         else navigate(url);
     };
+    const handleButton = (): void => {
+        dispatch(togglePopMenuContainer(true));
+        dispatch(toggleMenu({actionName: "addNewPostMenu", actionArgument: true}));
+    }
     const handleShowMenu = (): void => {
         if (showThemeSelector) setShowThemeSelector(false);
         else setShowMenu(!showMenu);
@@ -175,7 +194,7 @@ const Navbar = (): JSX.Element => {
                 <NavOptions
                     icon={<KeyboardBackspaceRoundedIcon style={navbarOptionIconStyle}/>}
                     url="back"
-                    actionCallback={handleNavigation}
+                    navigationAction={handleNavigation}
                 />
             </motion.div>}
             <motion.div
@@ -186,9 +205,10 @@ const Navbar = (): JSX.Element => {
                 {navbarOptionData.map((navOption: NavbarOptionDataType, index: number) => <NavOptions
                     key={index}
                     icon={navOption.icon}
-                    url={navOption.url}
+                    url={navOption?.url}
                     currentLocation={currentLocation}
-                    actionCallback={handleNavigation}
+                    navigationAction={handleNavigation}
+                    buttonAction={handleButton}
                 />)}
             </motion.div>
         </section>

@@ -5,13 +5,15 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import {PopUpMenuType} from "../../type/type";
 
 import React, {JSX, useState} from 'react';
-import ProfilePreviewCard from "../ProfilePreviewCard/ProfilePreviewCard";
 import {useDispatch, useSelector} from "react-redux";
-import {toggleCloseAll} from "../../store/slices/popUpSlices";
-import AddCommentOnPostMenu from "../AddCommentOnPostMenu/AddCommentOnPostMenu";
-import {clearAllAttachments} from "../../store/slices/attachmentsSlice";
+
+import ProfilePreviewCard from "../ProfilePreviewCard/ProfilePreviewCard";
+import AddPostMenu from "../AddPostMenu/AddPostMenu";
 import AltTextMenu from "../AltTextMenu/AltTextMenu";
 import AddGifMenu from "../AddGifMenu/AddGifMenu";
+
+import {toggleCloseAll} from "../../store/slices/popUpSlices";
+import {clearAllAttachments} from "../../store/slices/attachmentsSlice";
 
 interface PopUpMenuPropType {
     popMenuState: PopUpMenuType,
@@ -21,6 +23,7 @@ const PopUpMenuSelector = ({popMenuState,}: PopUpMenuPropType): JSX.Element | nu
     const {
         popUpMenuContainer,
         profilePreviewMenu,
+        addNewPostMenu,
         addCommentOnPostMenu,
         addAltTextMenu,
         addGifMenu,
@@ -40,11 +43,14 @@ const PopUpMenuSelector = ({popMenuState,}: PopUpMenuPropType): JSX.Element | nu
         whoCanReplyMenu,
     } = popMenuState;
 
-    if (profilePreviewMenu) return <ProfilePreviewCard previewType="menuType"/>;
-    else if (addCommentOnPostMenu) return <AddCommentOnPostMenu/>;
-        // else if (addCommentOnCommentMenu) return <AddCommentOnCommentMenu />;
-        else if (addAltTextMenu.isOpen) return <AltTextMenu  fileId={addAltTextMenu.fileId}/>;
-        else if (addGifMenu) return <AddGifMenu />;
+    if (profilePreviewMenu) {
+        // return <ProfilePreviewCard previewType="menuType"/>;
+        return <></>;
+    } else if (addNewPostMenu) return <AddPostMenu addType="newPost"/>;
+    else if (addCommentOnPostMenu) return <AddPostMenu addType="newComment"/>;
+    // else if (addCommentOnCommentMenu) return <AddCommentOnCommentMenu />;
+    else if (addAltTextMenu.isOpen) return <AltTextMenu fileId={addAltTextMenu.fileId}/>;
+    else if (addGifMenu) return <AddGifMenu/>;
         // else if (repostWithQuoteMenu) return <RepostWithQuoteMenu />;
         // else if (reportProblemMenu) return <ReportProblemMenu />;
         // else if (reportPostMenu) return <ReportPostMenu />;

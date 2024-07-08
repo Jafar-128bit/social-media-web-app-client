@@ -1,8 +1,7 @@
 import './feedPost.css';
-/* Default Assets Import */
+
 import defaultProfilePicture from '../../assets/profileImages/defaultProfile.png';
 
-/* Post Icons */
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
@@ -14,12 +13,10 @@ import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import FormatQuoteRoundedIcon from '@mui/icons-material/FormatQuoteRounded';
 import ContentCopyRoundedIcon from '@mui/icons-material/ContentCopyRounded';
 
-/* Library Imports */
 import {motion} from 'framer-motion';
 import {useState} from "react";
-/* Type imports */
-import {PopUpMenuType, PostMenuData} from "../../type/type";
-import ProfilePreviewCard from "../ProfilePreviewCard/ProfilePreviewCard";
+
+import {PostMenuData} from "../../type/type";
 import PostContent from "../PostContent/PostContent";
 import {useDispatch} from "react-redux";
 import {toggleMenu, togglePopMenuContainer} from "../../store/slices/popUpSlices";
@@ -93,7 +90,7 @@ const FeedPost = ({previewType}: PropFeedPost) => {
     };
 
     return <div className="feedPost" onClick={handleOpenPost}>
-        {showProfilePreviewCard && <ProfilePreviewCard previewType="hoverType"/>}
+        {/*{showProfilePreviewCard && <ProfilePreviewCard previewType="hoverType"/>}*/}
         <section className="feedPost__headingContainer">
             <section className="feedPost__headingContainer__accountInfo">
                 <div

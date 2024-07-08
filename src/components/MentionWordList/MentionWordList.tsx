@@ -4,11 +4,10 @@ import GppMaybeRoundedIcon from '@mui/icons-material/GppMaybeRounded';
 import RotateLeftRoundedIcon from '@mui/icons-material/RotateLeftRounded';
 import VerifiedIcon from '@mui/icons-material/Verified';
 
-import React, {useCallback, useEffect, useState} from "react";
 import {motion} from "framer-motion";
 
 import {ProfileDataType} from "../../type/type";
-import {fetchProfileData} from "../../utils/utils";
+import useFilterData from "../../hooks/useFilterData";
 
 type PropSpecialWordType = {
     searchWord: string;
@@ -16,40 +15,7 @@ type PropSpecialWordType = {
 }
 
 const MentionWordList = ({searchWord, handleSelectSuggestion}: PropSpecialWordType) => {
-    const [filteredProfileData, setFilteredProfileData] = useState<ProfileDataType[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
-
-    const debouncedSearch = useCallback(async (term: string) => {
-        try {
-            setLoading(true);
-            const data = await fetchProfileData(term);
-            setFilteredProfileData(data);
-            setLoading(false);
-            setError('');
-        } catch (error: any) {
-            if (error.message === "No user found!") setError('User not found');
-            else setError('Failed to fetch profile data');
-            setLoading(false);
-        }
-    }, []);
-    const fetchData = async () => {
-        try {
-            setLoading(true);
-            await debouncedSearch('');
-        } catch (error: any) {
-            if (error.message === "No user found!") setError('User not found');
-            else setError('Failed to fetch profile data');
-            setLoading(false);
-        }
-    };
-
-    useEffect(() => {
-        fetchData();
-    }, []);
-    useEffect(() => {
-        debouncedSearch(searchWord);
-    }, [searchWord, debouncedSearch]);
+    const {filteredProfileData, loading, error} = useFilterData(searchWord, "profile");
 
     return <motion.div
         className={`mentionWordList noScroll ${loading ? "mentionWordList__alertMode" : "mentionWordList__listMode"}`}
@@ -78,7 +44,7 @@ const MentionWordList = ({searchWord, handleSelectSuggestion}: PropSpecialWordTy
             }}/>
             {error}
         </p>}
-        {!loading && !error && filteredProfileData.map((profile: ProfileDataType, index: number) => <button
+        {!loading && !error && filteredProfileData?.map((profile:  ProfileDataType, index: number) => <button
             key={index}
             className="mentionWordList__profileContainer"
             onClick={() => handleSelectSuggestion(`${profile.username} `, "mention")}

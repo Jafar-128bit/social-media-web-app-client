@@ -1,4 +1,4 @@
-import {HashtagDataType, HashtagWithCounts, ProfileDataType} from "../type/type";
+import {HashtagWithCounts, ProfileDataType} from "../type/type";
 import {profileData, hashtagsData} from "../data/data";
 
 export const readFileAsDataURL = (file: File): Promise<string> => {
@@ -25,7 +25,7 @@ export const fetchProfileData = (searchTerm: string): Promise<ProfileDataType[]>
                 profile.username.toLowerCase().includes(searchTerm.toLowerCase())
             );
             if (filteredData.length === 0) reject(new Error("No user found!"));
-            else resolve(filteredData);
+            else resolve(searchTerm.length === 0 ? [] : filteredData);
         }, 500);
     });
 };

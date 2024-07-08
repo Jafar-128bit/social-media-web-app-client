@@ -23,6 +23,7 @@ import {readFileAsDataURL} from "../../utils/utils";
 import MentionWordList from "../MentionWordList/MentionWordList";
 import {EditorState, Modifier, SelectionState} from "draft-js";
 import HashtagWordList from "../HashtagWordList/HashtagWordList";
+import {useLocation} from "react-router-dom";
 
 const profileName = 'Profile Name';
 
@@ -46,8 +47,10 @@ const profileName = 'Profile Name';
 // console.log("Hashtags:", hashtags);
 // console.log("Mentions:", mentions);
 
-const AddCommentOnPostMenu = () => {
+const AddPostMenu = ({addType}: { addType: "newPost" | "newComment" }) => {
     const dispatch = useDispatch();
+    const location = useLocation().pathname.split("/")[1];
+
     const fileInputRef = useRef<HTMLInputElement>(null);
     const attachmentUrls = useSelector((state: any) => state.attachmentsSlice);
     const gifAttachmentData = useSelector((state: any) => state.gifAttachmentSlice);
@@ -134,7 +137,11 @@ const AddCommentOnPostMenu = () => {
         dispatch(removeAttachment(fileId));
     };
     const handleOpenAddGifMenu = (): void => {
-        dispatch(toggleMenu({actionName: "addCommentOnPost", actionArgument: false}));
+        if (location !== "create") {
+            dispatch(toggleMenu({actionName: "addCommentOnPost", actionArgument: false}));
+        } else {
+            dispatch(toggleMenu({actionName: "addNewPostMenu", actionArgument: false}));
+        }
         dispatch(toggleMenu({actionName: "addGif", actionArgument: true}));
     };
 
@@ -144,7 +151,11 @@ const AddCommentOnPostMenu = () => {
         oldAltText: string | undefined;
     }) => {
         const handleShowAltTextMenu = () => {
-            dispatch(toggleMenu({actionName: "addCommentOnPost", actionArgument: false}));
+            if (location === "create") {
+                dispatch(toggleMenu({actionName: "addNewPostMenu", actionArgument: false}));
+            } else {
+                dispatch(toggleMenu({actionName: "addCommentOnPost", actionArgument: false}));
+            }
             dispatch(toggleOptionsMenu({actionName: "addAltTextMenu", isOpen: true, referenceActionData: fileId}));
         };
 
@@ -208,7 +219,7 @@ const AddCommentOnPostMenu = () => {
     >
         {showMentionList && <MentionWordList searchWord={searchWord} handleSelectSuggestion={handleSelectSuggestion}/>}
         {showHashtagList && <HashtagWordList searchWord={searchWord} handleSelectSuggestion={handleSelectSuggestion}/>}
-        <FeedPost previewType="briefPreview"/>
+        {addType === "newComment" && <FeedPost previewType="briefPreview"/>}
         <section className="addCommentOnPostMenu__commentInputContainer">
             <div className="addCommentOnPostMenu__profilePictureContainer">
                 <img src={defaultProfilePicture} alt="profile picture" height="50px"/>
@@ -296,4 +307,4 @@ const AddCommentOnPostMenu = () => {
     </motion.div>
 }
 
-export default AddCommentOnPostMenu;
+export default AddPostMenu;

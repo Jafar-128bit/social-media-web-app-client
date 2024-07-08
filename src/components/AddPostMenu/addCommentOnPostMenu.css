@@ -13,7 +13,7 @@
     margin: 0;
 
     border-radius: var(--borderRadius4);
-    box-shadow: var(--shadow3);
+    box-shadow: var(--shadow1);
 
     position: relative;
 }
