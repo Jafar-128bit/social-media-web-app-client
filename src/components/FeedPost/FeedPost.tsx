@@ -78,7 +78,6 @@ const FeedPost = ({previewType}: PropFeedPost) => {
         setShowShareMenu(!showShareMenu);
         setShowRepostMenu(false);
         setShowPostMenu(false);
-
     };
     const handleAddCommentOnPost = () => {
         dispatch(togglePopMenuContainer(true));
@@ -203,7 +202,6 @@ const FeedPost = ({previewType}: PropFeedPost) => {
                     fontSize: "22px",
                 }}/>
             </button>
-
             {showRepostMenu && <div className="feedPost__postActionsMenu">
                 <button className="feedPost__postActionsBtn">
                     Repost <RepeatRoundedIcon style={{

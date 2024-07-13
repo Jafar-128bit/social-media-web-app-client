@@ -1,3 +1,242 @@
 .profilePost {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
 
+    width: 100%;
+    min-height: 150px;
+    max-height: max-content;
+}
+
+.profilePost__imageSection {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    width: 10%;
+    min-height: calc(150px - 20px);
+    max-height: calc(100% - 20px);
+
+    padding: 10px 0;
+}
+
+.profilePost__imageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 35px;
+    height: 35px;
+
+    border: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    position: relative;
+}
+
+.profilePost__imageContainer > img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+.profilePost__ContentSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+
+    width: calc(90% - 10px);
+    min-height: calc(150px - 20px);
+    max-height: calc(100% - 20px);
+
+    padding: 10px 10px 10px 0;
+}
+
+.profilePost__profileInfoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    width: 100%;
+    height: 30px;
+}
+
+.profilePost__profileInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    width: max-content;
+    height: max-content;
+}
+
+.profilePost__profileInfo > p {
+    padding: 0 2px;
+    margin: 0;
+
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.profilePost__profileUsername {
+    color: var(--colorBlack);
+
+    cursor: pointer;
+}
+
+.profilePost__profileUsername:hover {
+    text-decoration: underline;
+}
+
+.profilePost__postTime {
+    color: var(--colorGray5);
+
+    cursor: default;
+}
+
+.profilePost__postMenuBtn {
+    background: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    padding: 0;
+    margin: 0;
+
+    border: none;
+    outline: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.profilePost__postMenuBtn__btnBackground {
+    background: var(--colorGray8);
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+
+    position: absolute;
+    z-index: 1;
+}
+
+.profilePost__postContentContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    width: 100%;
+    min-height: calc(100% - 30px - 50px);
+    max-height: max-content;
+
+    padding: 0;
+}
+
+.profilePost__postActionContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 15px;
+
+    width: 100%;
+    height: 50px;
+
+    position: relative;
+}
+
+.profilePost__postActionBtn {
+    background: transparent;
+    color: var(--colorBlack);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    border: none;
+    outline: none;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.profilePost__postActionBtn:hover {
+    background: var(--colorGray7);
+}
+
+.profilePost__postActionsMenu {
+    background: var(--colorWhite);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-shrink: 0;
+    gap: 5px;
+
+    width: 170px;
+    height: max-content;
+
+    padding: 5px 0;
+
+    border-radius: var(--borderRadius4);
+    box-shadow: var(--shadow1);
+
+    z-index: 4;
+    position: absolute;
+    left: 200px;
+}
+
+.profilePost__postActionsSunBtn {
+    background: transparent;
+    color: var(--colorBlack);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: calc(100% - 10px);
+    height: calc((100% / 2) - 10px);
+
+    padding: 5px;
+    margin: 0;
+
+    border: none;
+    outline: none;
+
+    border-radius: var(--borderRadius3);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.profilePost__postActionsSunBtn:hover {
+    background: var(--colorGray7);
 }

@@ -1,6 +1,6 @@
 .popUpMenu {
     background: var(--colorBlackOpacity50);
-    backdrop-filter: blur(var(--blurLevel5p));
+    backdrop-filter: blur(var(--blurLevel12p));
 
     display: flex;
     align-items: center;
