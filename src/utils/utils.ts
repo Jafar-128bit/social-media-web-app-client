@@ -50,3 +50,12 @@ export const fetchHashtagData = (searchTerm: string): Promise<HashtagWithCounts[
         }, 500);
     });
 };
+
+export const formatDate = (dateString: string): string => {
+    const date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = {
+        year: 'numeric', month: 'numeric', day: 'numeric',
+    };
+
+    return date.toLocaleDateString('en-US', options);
+}

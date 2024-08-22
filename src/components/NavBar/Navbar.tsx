@@ -20,11 +20,15 @@ import {NavbarMenuOptionDataType, NavbarOptionDataType} from "../../type/type";
 
 import {useNavigate, useLocation} from 'react-router-dom';
 import {motion} from 'framer-motion';
-import {JSX, useState} from 'react';
-import {toggleMenu, togglePopMenuContainer} from "../../store/slices/popUpSlices";
-import {useDispatch} from "react-redux";
+import {JSX, useEffect, useState} from 'react';
+import {
+    togglePopUp,
+} from "../../store/slices/popUpSlices";
+import {useDispatch, useSelector} from "react-redux";
+import {profileData} from "../../data/data";
 
 type NavOptionsPropType = {
+    navName: string;
     icon: JSX.Element;
     url: string | null;
     currentLocation?: string;
@@ -32,9 +36,20 @@ type NavOptionsPropType = {
     buttonAction?: () => void;
 }
 
-const NavOptions = ({icon, url, currentLocation, navigationAction, buttonAction}: NavOptionsPropType): JSX.Element => {
+const NavOptions = ({
+                        navName,
+                        icon,
+                        url,
+                        currentLocation,
+                        navigationAction,
+                        buttonAction
+                    }: NavOptionsPropType): JSX.Element => {
     /* TODO: Add notification indicator */
     const [isHover, setIsHover] = useState<boolean>(false);
+    const [isActive, setIsActive] = useState<boolean>(false);
+
+    const profileInfo = useSelector((state: any) => state.profileInfoSlice.profileInfo);
+
     const handleButtonClick = () => {
         if (url) navigationAction(url);
         else {
@@ -42,13 +57,22 @@ const NavOptions = ({icon, url, currentLocation, navigationAction, buttonAction}
         }
     }
 
+    useEffect(() => {
+        if (navName === "profileNav") {
+            const usernameLink = currentLocation?.split('/')[2];
+            const profileLoggedIn = profileData.find(profile => profile.profileId === profileInfo.profileId);
+            if (profileLoggedIn !== undefined) setIsActive(profileLoggedIn.username === usernameLink);
+            else setIsActive(false);
+        } else setIsActive(url === currentLocation);
+    }, [currentLocation])
+
     return <button
         type="button"
         className="navbar__navOptions"
         onClick={handleButtonClick}
         onMouseOver={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
-        style={{color: url === currentLocation ? "var(--colorBlack)" : "var(--colorGray5)"}}
+        style={{color: isActive ? "var(--colorBlack)" : "var(--colorGray5)"}}
     >
         {icon}
         <motion.div
@@ -69,31 +93,39 @@ const Navbar = (): JSX.Element => {
     const dispatch = useDispatch();
     const currentLocation: string = useLocation().pathname;
 
+    const profileInfo = useSelector((state: any) => state.profileInfoSlice.profileInfo);
+    const currentProfileData = profileData.find(profile => profile.profileId === profileInfo.profileId);
+
     const navbarOptionData: NavbarOptionDataType[] = [
         {
+            navName: "homeNav",
             icon: <HomeRoundedIcon style={navbarOptionIconStyle}/>,
             url: "/",
             type: "url",
         },
         {
+            navName: "searchNav",
             icon: <SearchRoundedIcon style={navbarOptionIconStyle}/>,
             url: "/search",
             type: "url",
         },
         {
+            navName: "createBtn",
             icon: <AddCircleOutlineRoundedIcon style={navbarOptionIconStyle}/>,
             url: null,
             type: "button",
         },
         {
+            navName: "notificationNav",
             icon: currentLocation === "/notification" ? <FavoriteRoundedIcon style={navbarOptionIconStyle}/>
                 : <FavoriteBorderRoundedIcon style={navbarOptionIconStyle}/>,
             url: "/notification",
             type: "url",
         },
         {
+            navName: "profileNav",
             icon: <Person2RoundedIcon style={navbarOptionIconStyle}/>,
-            url: "/profile",
+            url: `/profile/${currentProfileData?.username}/post`,
             type: "url",
         },
     ];
@@ -117,8 +149,8 @@ const Navbar = (): JSX.Element => {
         else navigate(url);
     };
     const handleButton = (): void => {
-        dispatch(togglePopMenuContainer(true));
-        dispatch(toggleMenu({actionName: "addNewPostMenu", actionArgument: true}));
+        dispatch(togglePopUp({actionName: "popMenuContainer", actionArgument: true}));
+        dispatch(togglePopUp({actionName: "addNewPostMenu", actionArgument: true}));
     }
     const handleShowMenu = (): void => {
         if (showThemeSelector) setShowThemeSelector(false);
@@ -152,7 +184,7 @@ const Navbar = (): JSX.Element => {
                 break;
             case "logOutAction":
                 setShowMenu(false);
-                //TODO: Make a Logout Action using redux state
+                navigate("/credential/sign-in");
                 break;
             default:
                 break;
@@ -192,6 +224,7 @@ const Navbar = (): JSX.Element => {
                 transition={{duration: 0.15}}
             >
                 <NavOptions
+                    navName="backNav"
                     icon={<KeyboardBackspaceRoundedIcon style={navbarOptionIconStyle}/>}
                     url="back"
                     navigationAction={handleNavigation}
@@ -204,6 +237,7 @@ const Navbar = (): JSX.Element => {
             >
                 {navbarOptionData.map((navOption: NavbarOptionDataType, index: number) => <NavOptions
                     key={index}
+                    navName={navOption.navName}
                     icon={navOption.icon}
                     url={navOption?.url}
                     currentLocation={currentLocation}

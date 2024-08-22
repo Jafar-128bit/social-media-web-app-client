@@ -4,7 +4,7 @@
     justify-content: flex-start;
     flex-direction: column;
 
-    width: calc(100% - 4px);
+    width: 100%;
     height: max-content;
 }
 
@@ -69,7 +69,7 @@
     border-radius: 50%;
 
     cursor: pointer;
-
+    overflow: hidden;
     position: relative;
 }
 
@@ -121,7 +121,11 @@
 }
 
 .profile__profileInfoContainer__LinksAndFollowerCount {
+    background: transparent;
     color: var(--colorGray4);
+
+    border: none;
+    outline: none;
 
     padding: 0;
     margin: 0;
@@ -140,7 +144,6 @@
 .profile__profileInfoContainer__EditProfileButton {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: row;
 
     width: calc(100% - 40px);
@@ -154,7 +157,6 @@
     color: var(--colorGray2);
     background-color: var(--colorWhite);
 
-    width: 100%;
     height: 35px;
 
     padding: 0;
@@ -170,6 +172,22 @@
     cursor: pointer;
 }
 
+.myProfile {
+    justify-content: center;
+}
+
+.myProfile > button {
+    width: 100%;
+}
+
+.otherProfile {
+    justify-content: space-between;
+}
+
+.otherProfile > button {
+    width: calc(95% / 2);
+}
+
 .profile__profileInfoContainer__ContentSwitchTab {
     display: flex;
     align-items: center;
@@ -179,7 +197,7 @@
     width: 100%;
     height: max-content;
 
-    padding: 5px 0;
+    padding: 0;
     margin: 0;
 }
 
@@ -208,7 +226,7 @@
 
 .inActiveTab {
     color: var(--colorGray6);
-    border-bottom: 1px solid var(--colorGray6);
+    border-bottom: 1px solid var(--colorGray8);
 }
 
 .profile__profileContentContainer {
@@ -218,8 +236,51 @@
     flex-direction: column;
 
     width: 100%;
+    height: 100%;
+
+    padding: 0;
+    margin: 0;
+}
+
+.profile__postReplies {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 100%;
     height: max-content;
 
     padding: 0;
     margin: 0;
+}
+
+.profile__replyPostContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 90%;
+    height: max-content;
+
+    padding: 0;
+    margin: 0;
+}
+
+.profile__emptyRepostMessageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+}
+
+.profile__emptyRepostMessage {
+    color: var(--colorGray5);
+
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
 }

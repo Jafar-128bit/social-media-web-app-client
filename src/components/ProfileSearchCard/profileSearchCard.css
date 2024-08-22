@@ -52,7 +52,8 @@
     height: 85%;
 }
 
-.profileSearchCard__info > p {
+.profileSearchCard__info > p,
+.profileSearchCard__infoProfileName {
     width: max-content;
     height: max-content;
 

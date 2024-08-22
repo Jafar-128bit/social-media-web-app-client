@@ -5,7 +5,7 @@ import {motion} from 'framer-motion';
 import React, {useState} from "react";
 import {updateAltText} from "../../store/slices/attachmentsSlice";
 import {useDispatch, useSelector} from "react-redux";
-import {toggleMenu, toggleOptionsMenu} from "../../store/slices/popUpSlices";
+import {togglePopUp} from "../../store/slices/popUpSlices";
 
 const AltTextMenu = ({fileId}: { fileId: string }) => {
     const dispatch = useDispatch();
@@ -14,22 +14,19 @@ const AltTextMenu = ({fileId}: { fileId: string }) => {
     const [altText, setAltText] = useState<string>(attachmentUrls.files[fileId]?.alt);
 
     const handleCloseAltText = () => {
-        dispatch(toggleOptionsMenu({actionName: "addAltTextMenu", isOpen: false, referenceActionData: ""}));
-        dispatch(toggleMenu({actionName: "addCommentOnPost", actionArgument: true}));
+        dispatch(togglePopUp({actionName: "addAltTextMenu", actionArgument: false, actionState: undefined}));
+        dispatch(togglePopUp({actionName: "addCommentMenu", actionArgument: true}));
     };
     const handleAltTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setAltText(event.target.value);
-
         event.target.style.height = 'auto';
         event.target.style.height = event.target.scrollHeight + 'px';
     };
     const handelSetAltText = () => {
-        if (altText !== "") {
-            dispatch(updateAltText({fileId: fileId, alt: altText}));
-        }
+        if (altText !== "") dispatch(updateAltText({fileId: fileId, alt: altText}));
         setAltText("");
-        dispatch(toggleMenu({actionName: "addCommentOnPost", actionArgument: true}));
-        dispatch(toggleOptionsMenu({actionName: "addAltTextMenu", isOpen: false, referenceActionData: ""}));
+        dispatch(togglePopUp({actionName: "addCommentMenu", actionArgument: false}));
+        dispatch(togglePopUp({actionName: "addAltTextMenu", actionArgument: true, actionState: undefined}));
     };
 
     return <motion.div

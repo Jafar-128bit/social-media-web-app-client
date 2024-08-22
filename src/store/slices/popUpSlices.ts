@@ -1,128 +1,45 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {PopUpMenuType} from "../../type/type";
+import {PopUpType} from "../../type/type";
 
-type popActionType = {
-    actionName: "popUpMenuContainer" | "profilePreview" | "addNewPostMenu" | "addCommentOnPost" | "addCommentOnComment"
-        | "repostWithQuote" | "reportProblem" | "reportPost" | "blockProfile" | "editComment" | "addGif"
-        | "editProfile" | "editName" | "editDescription" | "editLink" | "showProfilePicture"
-        | "deletePost" | "deleteComment" | "whoCanReply";
-    actionArgument: boolean;
-}
-
-type popActionOptionType = {
-    actionName: "addAltTextMenu";
-    isOpen: boolean;
-    referenceActionData: string;
-}
-
-const initialState: PopUpMenuType = {
-    popUpMenuContainer: false,
-    profilePreviewMenu: false,
-    addNewPostMenu: false,
-    addCommentOnPostMenu: false,
-    addCommentOnCommentMenu: false,
-    addAltTextMenu: {isOpen: false, fileId: ""},
-    addGifMenu: false,
-    repostWithQuoteMenu: false,
-    reportProblemMenu: false,
-    reportPostMenu: false,
-    blockProfileMenu: false,
-    editCommentMenu: false,
-    editProfileMenu: false,
-    editNameMenu: false,
-    editDescriptionMenu: false,
-    editLinkMenu: false,
-    showProfilePictureMenu: false,
-    deletePostMenu: false,
-    deleteCommentMenu: false,
-    whoCanReplyMenu: false,
-};
+const initialState: PopUpType[] = [
+    //State Dependent pop-ups
+    {actionName: "followerListMenu", actionArgument: false, actionState: undefined},
+    {actionName: "addCommentMenu", actionArgument: false, actionState: undefined},
+    {actionName: "likedListMenu", actionArgument: false, actionState: undefined},
+    {actionName: "deletePostMenu", actionArgument: false, actionState: undefined},
+    {actionName: "followMenu", actionArgument: false, actionState: undefined},
+    {actionName: "addRepostMenu", actionArgument: false, actionState: undefined},
+    {actionName: "addAltTextMenu", actionArgument: false, actionState: undefined},
+    //State Independent pop-ups
+    {actionName: "addGif", actionArgument: false},
+    {actionName: "popMenuContainer", actionArgument: false},
+    {actionName: "addNewPostMenu", actionArgument: false},
+    {actionName: "editProfileMenu", actionArgument: false},
+    {actionName: "profilePictureMenu", actionArgument: false},
+]
 
 const popUpSlice = createSlice({
-    name: "popUpSlice",
+    name: "popUpSlices",
     initialState: initialState,
     reducers: {
-        togglePopMenuContainer: (state, action: PayloadAction<boolean>) => {
-            state.popUpMenuContainer = action.payload;
-        },
-        toggleMenu: (state, action: PayloadAction<popActionType>) => {
-            const {actionName, actionArgument} = action.payload;
-            switch (actionName) {
-                case "profilePreview":
-                    state.profilePreviewMenu = actionArgument;
-                    break;
-                case "addNewPostMenu":
-                    state.addNewPostMenu = actionArgument;
-                    break;
-                case "addCommentOnPost":
-                    state.addCommentOnPostMenu = actionArgument;
-                    break;
-                case "addCommentOnComment":
-                    state.addCommentOnCommentMenu = actionArgument;
-                    break;
-                case "addGif":
-                    state.addGifMenu = actionArgument;
-                    break;
-                case "repostWithQuote":
-                    state.repostWithQuoteMenu = actionArgument;
-                    break;
-                case "reportProblem":
-                    state.reportProblemMenu = actionArgument;
-                    break;
-                case "reportPost":
-                    state.reportPostMenu = actionArgument;
-                    break;
-                case "blockProfile":
-                    state.blockProfileMenu = actionArgument;
-                    break;
-                case "editComment":
-                    state.editCommentMenu = actionArgument;
-                    break;
-                case "editProfile":
-                    state.editProfileMenu = actionArgument;
-                    break;
-                case "editName":
-                    state.editNameMenu = actionArgument;
-                    break;
-                case "editDescription":
-                    state.editDescriptionMenu = actionArgument;
-                    break;
-                case "editLink":
-                    state.editLinkMenu = actionArgument;
-                    break;
-                case "showProfilePicture":
-                    state.showProfilePictureMenu = actionArgument;
-                    break;
-                case "deletePost":
-                    state.deletePostMenu = actionArgument;
-                    break;
-                case "deleteComment":
-                    state.deleteCommentMenu = actionArgument;
-                    break;
-                case "whoCanReply":
-                    state.whoCanReplyMenu = actionArgument;
-                    break;
-                default:
-                    break;
+        togglePopUp: (state, action: PayloadAction<PopUpType>) => {
+            const {actionName, actionArgument, actionState} = action.payload;
+            const findStateIndex = state.findIndex(initialState => initialState.actionName === actionName);
+            if (findStateIndex !== -1) {
+                state[findStateIndex].actionArgument = actionArgument;
+                if (actionState !== undefined) state[findStateIndex].actionState = actionState;
             }
         },
-        toggleOptionsMenu: (state, action: PayloadAction<popActionOptionType>) => {
-            const {actionName, isOpen, referenceActionData} = action.payload;
-
-            switch (actionName) {
-                case "addAltTextMenu":
-                    state.addAltTextMenu.isOpen = isOpen;
-                    state.addAltTextMenu.fileId = referenceActionData;
-                    break;
-                default:
-                    break;
-            }
-        },
-        toggleCloseAll: () => {
-            return {...initialState,};
+        toggleCloseAll: (state) => {
+            state.forEach((popUp) => {
+                popUp.actionArgument = false;
+                if (popUp.actionState !== undefined) {
+                    popUp.actionState = undefined;
+                }
+            });
         }
     }
 });
 
-export const {togglePopMenuContainer, toggleMenu, toggleOptionsMenu, toggleCloseAll} = popUpSlice.actions;
+export const {togglePopUp, toggleCloseAll} = popUpSlice.actions;
 export default popUpSlice.reducer;

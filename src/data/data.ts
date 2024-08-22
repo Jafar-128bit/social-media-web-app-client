@@ -1,5 +1,5 @@
 /* Type Imports */
-import {HashtagDataType, ProfileDataType} from "../type/type";
+import {HashtagDataType, PostType, ProfileDataType} from "../type/type";
 
 /* File Imports */
 import pic1 from '../assets/profileImages/pic1.jpeg';
@@ -23,7 +23,7 @@ export const profileData: ProfileDataType[] = [
             profileLinks: ["https://linkedin.com/in/johndoe", "https://twitter.com/johndoe"],
         },
         profileImage: pic1,
-        followers: [2, 3, 4, 5],
+        followers: [2, 3, 4, 5, 8, 9, 10],
         following: [6, 7, 8],
         isPrivate: false,
         isActive: true,
@@ -38,8 +38,8 @@ export const profileData: ProfileDataType[] = [
             profileLinks: ["https://behance.net/janesmith", "https://instagram.com/janesmith"],
         },
         profileImage: pic2,
-        followers: [1, 3, 5, 7, 9],
-        following: [2, 4, 6, 8],
+        followers: [1, 3, 5, 7, 9, 10],
+        following: [4, 6, 8],
         isPrivate: true,
         isActive: true,
         isVerified: false,
@@ -54,7 +54,7 @@ export const profileData: ProfileDataType[] = [
         },
         profileImage: pic3,
         followers: [1, 2, 4, 6, 8, 10],
-        following: [3, 5, 7, 9],
+        following: [5, 7, 9],
         isPrivate: false,
         isActive: true,
         isVerified: true,
@@ -68,7 +68,7 @@ export const profileData: ProfileDataType[] = [
             profileLinks: ["https://linkedin.com/in/emilydavis", "https://github.com/emilydavis"],
         },
         profileImage: pic4,
-        followers: [2, 4, 6, 8, 10],
+        followers: [2, 3, 6, 8, 10],
         following: [1, 3, 5, 7, 9],
         isPrivate: false,
         isActive: true,
@@ -83,7 +83,7 @@ export const profileData: ProfileDataType[] = [
             profileLinks: ["https://linkedin.com/in/davidlee", "https://twitter.com/davidlee"],
         },
         profileImage: pic5,
-        followers: [1, 3, 5, 7, 9],
+        followers: [1, 2, 3, 4, 7, 9, 10],
         following: [2, 4, 6, 8, 10],
         isPrivate: false,
         isActive: true,
@@ -98,7 +98,7 @@ export const profileData: ProfileDataType[] = [
             profileLinks: ["https://behance.net/sarahwilson", "https://instagram.com/sarahwilson"],
         },
         profileImage: pic6,
-        followers: [2, 4, 6, 8, 10],
+        followers: [2, 3, 4, 5, 8, 10],
         following: [1, 3, 5, 7, 9],
         isPrivate: true,
         isActive: true,
@@ -113,7 +113,7 @@ export const profileData: ProfileDataType[] = [
             profileLinks: ["https://github.com/tombrown", "https://codepen.io/tombrown"],
         },
         profileImage: pic7,
-        followers: [1, 3, 5, 7, 9],
+        followers: [1, 2, 3, 5, 6, 9],
         following: [2, 4, 6, 8, 10],
         isPrivate: false,
         isActive: true,
@@ -128,7 +128,7 @@ export const profileData: ProfileDataType[] = [
             profileLinks: ["https://linkedin.com/in/jessicamartinez", "https://medium.com/@jessicamartinez"],
         },
         profileImage: pic8,
-        followers: [2, 4, 6, 8, 10],
+        followers: [2, 3, 4, 6, 10],
         following: [1, 3, 5, 7, 9],
         isPrivate: false,
         isActive: true,
@@ -143,7 +143,7 @@ export const profileData: ProfileDataType[] = [
             profileLinks: ["https://github.com/robertchen", "https://linkedin.com/in/robertchen"],
         },
         profileImage: pic9,
-        followers: [1, 3, 5, 7, 9],
+        followers: [1, 2, 3, 5, 6, 7],
         following: [2, 4, 6, 8, 10],
         isPrivate: false,
         isActive: true,
@@ -158,13 +158,14 @@ export const profileData: ProfileDataType[] = [
             profileLinks: ["https://linkedin.com/in/lisataylor", "https://twitter.com/lisataylor"],
         },
         profileImage: pic10,
-        followers: [2, 4, 6, 8, 10],
+        followers: [2, 3, 4, 5, 6, 8],
         following: [1, 3, 5, 7, 9],
         isPrivate: false,
         isActive: true,
         isVerified: true,
     },
 ];
+
 
 const generateHashtags = (): HashtagDataType[] => {
     const hashtags: string[] = [

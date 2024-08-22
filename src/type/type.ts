@@ -1,6 +1,7 @@
 import {JSX} from 'react';
 
 export interface NavbarOptionDataType {
+    navName: string;
     icon: JSX.Element;
     url: string | null;
     type: "url" | "button";
@@ -11,32 +12,20 @@ export interface NavbarMenuOptionDataType {
     actionName: "openThemeMenu" | "gotoSettings" | "gotoSaved" | "gotoYourLikes" | "openReportMenu" | "logOutAction";
 }
 
-interface AltTextMenuOptionsType {
-    isOpen: boolean;
-    fileId: string;
+export interface AddCommentActionStateType {
+    postId: number;
+    profileId: number;
 }
 
-export interface PopUpMenuType {
-    popUpMenuContainer: boolean;
-    profilePreviewMenu: boolean;
-    addNewPostMenu: boolean;
-    addCommentOnPostMenu: boolean;
-    addCommentOnCommentMenu: boolean;
-    addAltTextMenu: AltTextMenuOptionsType;
-    addGifMenu: boolean;
-    repostWithQuoteMenu: boolean;
-    reportProblemMenu: boolean;
-    reportPostMenu: boolean;
-    blockProfileMenu: boolean;
-    editCommentMenu: boolean;
-    editProfileMenu: boolean;
-    editNameMenu: boolean;
-    editDescriptionMenu: boolean;
-    editLinkMenu: boolean;
-    showProfilePictureMenu: boolean;
-    deletePostMenu: boolean;
-    deleteCommentMenu: boolean;
-    whoCanReplyMenu: boolean;
+export interface AddRepostActionStateType {
+    postId: number;
+    originalPostId: number;
+}
+
+export interface PopUpType {
+    actionName: string;
+    actionArgument: boolean;
+    actionState?: any | AddCommentActionStateType | AddRepostActionStateType | undefined;
 }
 
 export interface Attachment {
@@ -85,14 +74,6 @@ export interface ProfileDataType {
     isVerified: boolean;
 }
 
-export interface PostDataType {
-    postId: number;
-    profileId: number;
-    postTextContent: string;
-    isAttachmentContain: boolean;
-    postTime: string;
-}
-
 export interface HashtagDataType {
     hashtag_id: number;
     hashtagged_user_id: number | null;
@@ -104,4 +85,24 @@ export interface HashtagDataType {
 export interface HashtagWithCounts {
     hashtag_text: string;
     hashtag_useCounts: number;
+}
+
+export interface PostType {
+    postId?: number;
+    profileId: number;
+    timestamp: string;
+    content: string;
+    likeIds: number[];
+    comments: CommentType[];
+    isRepost: boolean;
+    originalPostId?: number;
+}
+
+export interface CommentType {
+    commentId: number;
+    profileId: number;
+    timestamp: string;
+    content: string;
+    likeIds: number[];
+    replies?: CommentType[];
 }

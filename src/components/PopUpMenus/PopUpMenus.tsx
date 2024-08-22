@@ -2,105 +2,65 @@ import './popUpMenus.css';
 
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
-import {PopUpMenuType} from "../../type/type";
+import {PopUpType} from "../../type/type";
 
 import React, {JSX, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 
-import ProfilePreviewCard from "../ProfilePreviewCard/ProfilePreviewCard";
 import AddPostMenu from "../AddPostMenu/AddPostMenu";
 import AltTextMenu from "../AltTextMenu/AltTextMenu";
 import AddGifMenu from "../AddGifMenu/AddGifMenu";
 
 import {toggleCloseAll} from "../../store/slices/popUpSlices";
 import {clearAllAttachments} from "../../store/slices/attachmentsSlice";
+import FollowersList from "../FollowersList/FollowersList";
+import EditProfileMenu from "../EditProfileMenu/EditProfileMenu";
+import ProfilePicture from "../ProfilePicture/ProfilePicture";
 
-interface PopUpMenuPropType {
-    popMenuState: PopUpMenuType,
-}
+const PopUpMenuSelector = ({popMenuState}: { popMenuState: PopUpType[] }): JSX.Element | null => {
 
-const PopUpMenuSelector = ({popMenuState,}: PopUpMenuPropType): JSX.Element | null => {
-    const {
-        popUpMenuContainer,
-        profilePreviewMenu,
-        addNewPostMenu,
-        addCommentOnPostMenu,
-        addAltTextMenu,
-        addGifMenu,
-        addCommentOnCommentMenu,
-        repostWithQuoteMenu,
-        reportProblemMenu,
-        reportPostMenu,
-        blockProfileMenu,
-        editCommentMenu,
-        editProfileMenu,
-        editNameMenu,
-        editDescriptionMenu,
-        editLinkMenu,
-        showProfilePictureMenu,
-        deletePostMenu,
-        deleteCommentMenu,
-        whoCanReplyMenu,
-    } = popMenuState;
+    const followerListMenu = popMenuState.find(popUp => popUp.actionName === "followerListMenu");
+    const addGifMenu = popMenuState.find(popUp => popUp.actionName === "addGif");
+    const addAltTextMenu = popMenuState.find(popUp => popUp.actionName === "addAltTextMenu");
+    const addCommentMenu = popMenuState.find(popUp => popUp.actionName === "addCommentMenu");
+    const addNewPostMenu = popMenuState.find(popUp => popUp.actionName === "addNewPostMenu");
+    const editProfileMenu = popMenuState.find(popUp => popUp.actionName === "editProfileMenu");
+    const profilePictureMenu = popMenuState.find(popUp => popUp.actionName === "profilePictureMenu");
+    const addRepostMenu = popMenuState.find(popUp => popUp.actionName === "addRepostMenu");
 
-    if (profilePreviewMenu) {
-        // return <ProfilePreviewCard previewType="menuType"/>;
-        return <></>;
-    } else if (addNewPostMenu) return <AddPostMenu addType="newPost"/>;
-    else if (addCommentOnPostMenu) return <AddPostMenu addType="newComment"/>;
-    // else if (addCommentOnCommentMenu) return <AddCommentOnCommentMenu />;
-    else if (addAltTextMenu.isOpen) return <AltTextMenu fileId={addAltTextMenu.fileId}/>;
-    else if (addGifMenu) return <AddGifMenu/>;
-        // else if (repostWithQuoteMenu) return <RepostWithQuoteMenu />;
-        // else if (reportProblemMenu) return <ReportProblemMenu />;
-        // else if (reportPostMenu) return <ReportPostMenu />;
-        // else if (blockProfileMenu) return <BlockProfileMenu />;
-        // else if (editCommentMenu) return <EditCommentMenu />;
-        // else if (editProfileMenu) return <EditProfileMenu />;
-        // else if (editNameMenu) return <EditNameMenu />;
-        // else if (editDescriptionMenu) return <EditDescriptionMenu />;
-        // else if (editLinkMenu) return <EditLinkMenu />;
-        // else if (showProfilePictureMenu) return <ShowProfilePictureMenu />;
-        // else if (deletePostMenu) return <DeletePostMenu />;
-        // else if (deleteCommentMenu) return <DeleteCommentMenu />;
-    // else if (whoCanReplyMenu) return <WhoCanReplyMenu />;
+    if (followerListMenu?.actionArgument) {
+        if (typeof followerListMenu.actionState === "number") {
+            return <FollowersList profileId={followerListMenu?.actionState}/>;
+        } else return null;
+    } else if (addNewPostMenu?.actionArgument) return <AddPostMenu addType="newPost"/>;
+    else if (addCommentMenu?.actionArgument) return <AddPostMenu addType="newComment"/>;
+    else if (addRepostMenu?.actionArgument) return <AddPostMenu addType="newRepost"/>;
+    else if (addAltTextMenu?.actionArgument) {
+        if (typeof addAltTextMenu.actionState === "string") {
+            return <AltTextMenu fileId={addAltTextMenu.actionState}/>;
+        } else return null;
+    } else if (addGifMenu?.actionArgument) return <AddGifMenu/>;
+    else if (editProfileMenu?.actionArgument) return <EditProfileMenu/>;
+    else if (profilePictureMenu?.actionArgument) return <ProfilePicture/>;
     else return null;
 };
 
-const PopUpMenus = ({popMenuState}: PopUpMenuPropType): JSX.Element => {
+const PopUpMenus = ({popMenuState}: { popMenuState: PopUpType[] }): JSX.Element => {
 
     const dispatch = useDispatch();
     const [showDiscardMenu, setShowDiscardMenu] = useState<boolean>(false);
     const attachmentUrls = useSelector((state: any) => state.attachmentsSlice);
+    const addGifMenu = popMenuState.find(popUp => popUp.actionName === "addGif");
+    const addAltTextMenu = popMenuState.find(popUp => popUp.actionName === "addAltTextMenu");
+    const addCommentMenu = popMenuState.find(popUp => popUp.actionName === "addCommentMenu");
+    const addNewPostMenu = popMenuState.find(popUp => popUp.actionName === "addNewPostMenu");
 
-    const {
-        popUpMenuContainer,
-        profilePreviewMenu,
-        addCommentOnPostMenu,
-        addCommentOnCommentMenu,
-        addAltTextMenu,
-        addGifMenu,
-        repostWithQuoteMenu,
-        reportProblemMenu,
-        reportPostMenu,
-        blockProfileMenu,
-        editCommentMenu,
-        editProfileMenu,
-        editNameMenu,
-        editDescriptionMenu,
-        editLinkMenu,
-        showProfilePictureMenu,
-        deletePostMenu,
-        deleteCommentMenu,
-        whoCanReplyMenu,
-    } = popMenuState;
-
-    const isHideCloseBtn: boolean = !addAltTextMenu.isOpen && !addGifMenu;
+    const isHideCloseBtn: boolean = !addAltTextMenu?.actionArgument && !addGifMenu?.actionArgument;
 
     const handleClosePopMenuContainer = (): void => {
-        if (addCommentOnPostMenu) {
+        if (addCommentMenu?.actionArgument || addNewPostMenu?.actionArgument) {
             const {postComment} = attachmentUrls;
-            if (postComment === "" && Object.keys(attachmentUrls.files).length !== 0) {
+            if (postComment.length > 0 || Object.keys(attachmentUrls.files).length > 0) {
                 setShowDiscardMenu(true);
             } else {
                 dispatch(toggleCloseAll());

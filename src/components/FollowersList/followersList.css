@@ -1,0 +1,171 @@
+.followersList {
+    background: var(--colorWhite);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 500px;
+    min-height: max-content;
+    max-height: 95%;
+
+    border-radius: var(--borderRadius4);
+
+    overflow: hidden;
+}
+
+.followersList__tabContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    width: 100%;
+    height: 80px;
+}
+
+.followersList__tabBtn {
+    background: transparent;
+    color: var(--colorBlack);
+
+    border: none;
+    outline: none;
+
+    width: calc(100% / 2);
+    height: 100%;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.followersList__activeBtn {
+    border-bottom: 2px solid var(--colorGray5);
+}
+
+.followersList__inActiveBtn {
+    border-bottom: 2px solid var(--colorGray8);
+}
+
+.followersList__contentContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    width: 100%;
+    min-height: 80px;
+
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.followersList__ProfileCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    width: calc(100% - 20px);
+    min-height: 70px;
+
+    padding: 0 10px;
+}
+
+.followersList__ProfileCard__profileInfoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    width: max-content;
+    height: max-content;
+}
+
+.followersList__ProfileCard__usernameContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: max-content;
+    height: max-content;
+
+    padding: 0 5px;
+    margin: 0 0 0 5px;
+}
+
+.followersList__ProfileCard__username {
+    color: var(--colorBlack);
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.followersList__ProfileCard__username:hover {
+    text-decoration: underline;
+}
+
+.followersList__ProfileCard__imageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    height: 50px;
+
+    border: 1px solid var(--colorGray7);
+    border-radius: 50%;
+    box-shadow: var(--shadow3);
+
+    overflow: hidden;
+}
+
+.followersList__ProfileCard__imageContainer > img {
+    width: 100%;
+    height: auto;
+
+    object-fit: cover;
+}
+
+.followersList__ProfileCard__profileActionContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    width: max-content;
+    height: max-content;
+}
+
+.followersList__ProfileCard__profileActionBtn {
+    background: transparent;
+    color: var(--colorGray3);
+
+    width: calc(140px - 20px);
+    height: max-content;
+
+    padding: 5px 10px;
+    margin: 0;
+
+    border: 1px solid var(--colorGray7);
+    outline: none;
+
+    border-radius: var(--borderRadius4);
+
+    font-size: 16px;
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+.followersList__ProfileCard__profileActionBtn:hover {
+    background: var(--colorGray8);
+    color: var(--colorBlack);
+
+    border: 2px solid var(--colorGray8);
+    box-shadow: var(--shadow1);
+}

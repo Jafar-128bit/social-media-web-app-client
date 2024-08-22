@@ -10,7 +10,7 @@ import {ChangeEvent, SyntheticEvent, useState} from "react";
 import {useDispatch} from "react-redux";
 import {useLocation} from 'react-router-dom';
 
-import {toggleMenu} from "../../store/slices/popUpSlices";
+import {togglePopUp} from "../../store/slices/popUpSlices";
 import {addGifAttachment} from "../../store/slices/gifAttachmentSlice";
 import {GifFileType} from "../../type/type";
 
@@ -33,27 +33,25 @@ const AddGifMenu = () => {
         setSearchKey(event.target.value);
     };
     const handleCloseGifMenu = (): void => {
-        dispatch(toggleMenu({actionName: "addGif", actionArgument: false}));
+        dispatch(togglePopUp({actionName: "addGif", actionArgument: false}));
         if (location !== "create") {
-            dispatch(toggleMenu({actionName: "addCommentOnPost", actionArgument: true}));
+            dispatch(togglePopUp({actionName: "addCommentMenu", actionArgument: true}));
         } else {
-            dispatch(toggleMenu({actionName: "addNewPostMenu", actionArgument: true}));
+            dispatch(togglePopUp({actionName: "addNewPostMenu", actionArgument: true}));
         }
     };
     const handleSetGifFile = async (gif: any, e: SyntheticEvent<HTMLElement, Event>): Promise<void> => {
         e.preventDefault();
-
         const {width, height, size, url}: GifFileType = gif.images.preview_webp;
-
         dispatch(addGifAttachment({
             gif: {width, height, size, url},
             altText: gif.alt_text,
         }));
-        dispatch(toggleMenu({actionName: 'addGif', actionArgument: false}));
+        dispatch(togglePopUp({actionName: "addGif", actionArgument: false}));
         if (location !== "create") {
-            dispatch(toggleMenu({actionName: "addCommentOnPost", actionArgument: true}));
+            dispatch(togglePopUp({actionName: "addCommentMenu", actionArgument: true}));
         } else {
-            dispatch(toggleMenu({actionName: "addNewPostMenu", actionArgument: true}));
+            dispatch(togglePopUp({actionName: "addNewPostMenu", actionArgument: true}));
         }
     };
 

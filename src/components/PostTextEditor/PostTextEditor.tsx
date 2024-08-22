@@ -18,7 +18,8 @@ type PropPostEditorType = {
     handleSetContent: (content: string) => void;
     handleShowSpecialWordList: (wordType: "hashtag" | "mention", isShow: boolean) => void;
     handleChangeSearchWord: (searchTerm: string) => void;
-    profileName: string;
+    profileName?: string;
+    type: "newPost" | "newComment" | "newRepost";
 }
 
 const PostTextEditor = ({
@@ -27,7 +28,8 @@ const PostTextEditor = ({
                             handleSetContent,
                             profileName,
                             handleShowSpecialWordList,
-                            handleChangeSearchWord
+                            handleChangeSearchWord,
+                            type
                         }: PropPostEditorType) => {
     const MAX_CHARACTERS: number = 500;
 
@@ -191,7 +193,11 @@ const PostTextEditor = ({
                 onChange={handleChange}
                 customStyleMap={styleMap}
                 handlePastedText={handlePastedText}
-                placeholder={`Reply to ${profileName}...`}
+                placeholder={type === "newPost"
+                    ? `Whats in your mind...`
+                    : type === "newComment"
+                        ? `Reply to ${profileName}...`
+                        : `Quote to ${profileName} post...`}
                 spellCheck={true}
             />
         </div>

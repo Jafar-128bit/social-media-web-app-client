@@ -12,14 +12,21 @@ import Saved from "./pages/Saved/Saved";
 import YourLikes from "./pages/YourLikes/YourLikes";
 import PopUpMenus from "./components/PopUpMenus/PopUpMenus";
 import usePopState from "./hooks/usePopUpState";
+import Credential from "./pages/Credential/Credential";
+import PostPage from "./pages/PostPage/PostPage";
 
 const App = () => {
     const MainApp = () => {
-        const [popUpContainerState, popMenuState] = usePopState();
+        const popMenuState = usePopState();
+        const popUpMenuContainer = popMenuState.find(popUp => popUp.actionName === "popMenuContainer");
+
         return <div className="app">
-            {popUpContainerState && <section className="app__popUpMenuContainer">
-                <PopUpMenus popMenuState={popMenuState}/>
-            </section>}
+            {
+                popUpMenuContainer?.actionArgument &&
+                <section className="app__popUpMenuContainer">
+                    <PopUpMenus popMenuState={popMenuState}/>
+                </section>
+            }
             <Navbar/>
             <section className="app__pageContainer noScroll">
                 <Outlet/>
@@ -35,7 +42,8 @@ const App = () => {
                 {path: "/", element: <Home/>,},
                 {path: "/search", element: <Search/>,},
                 {path: "/notification", element: <Notification/>},
-                {path: "/profile", element: <Profile/>},
+                {path: "/post", element: <PostPage/>},
+                {path: "/profile/:username/:tab", element: <Profile/>},
 
                 {path: "/settings", element: <Settings/>},
                 {path: "/saved", element: <Saved/>},
@@ -45,10 +53,10 @@ const App = () => {
         {
             path: "/credential",
             children: [
-                {path: "sign-up", element: <div>Sign Up</div>},
-                {path: "sign-in", element: <div>Sign In</div>}
+                {path: "sign-in", element: <Credential type={"sign-in"}/>},
+                {path: "sign-up", element: <Credential type={"sign-up"}/>}
             ]
-        }
+        },
     ]);
 
     return <RouterProvider router={router}/>

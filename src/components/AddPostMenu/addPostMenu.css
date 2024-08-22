@@ -18,6 +18,18 @@
     position: relative;
 }
 
+.addCommentOnPostMenu__postContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 100%;
+    height: max-content;
+
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
 .addCommentOnPostMenu__commentInputContainer {
     display: flex;
     align-items: flex-start;
@@ -44,6 +56,7 @@
     box-shadow: var(--shadow4);
 
     cursor: default;
+    overflow: hidden;
 }
 
 .addCommentOnPostMenu__profilePictureContainer > img {

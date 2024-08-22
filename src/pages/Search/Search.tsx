@@ -3,10 +3,10 @@ import './search.css';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import {searchIconStyle} from "../../style/style";
 import ProfileSearchCard from "../../components/ProfileSearchCard/ProfileSearchCard";
-import {useState} from "react";
+import {ChangeEvent, useState} from "react";
 import useFilterData from "../../hooks/useFilterData";
 
-const SearchInput = ({handleChangeSearchWord}: { handleChangeSearchWord: (event: any) => void }) => {
+const SearchInput = ({handleChangeSearchWord}: { handleChangeSearchWord: (event: ChangeEvent<HTMLInputElement>) => void }) => {
     return <div className="search__searchInput">
         <div className="search__searchInput__searchIcon">
             <SearchRoundedIcon style={searchIconStyle}/>
@@ -33,7 +33,7 @@ const SearchResultContainer = ({searchWord}: { searchWord: string }) => {
 
 const Search = () => {
     const [searchWord, setSearchWord] = useState<string>('');
-    const handleChangeSearchWord = (event: any): void => {
+    const handleChangeSearchWord = (event: ChangeEvent<HTMLInputElement>): void => {
         event.preventDefault();
         setSearchWord(event.target.value);
     };
