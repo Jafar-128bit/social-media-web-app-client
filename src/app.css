@@ -28,6 +28,11 @@
 
     --color1: #364aff;
     --color2: #ff3636;
+    --color3: #ffd036;
+
+    --color1Light: #dddfff;
+    --color2Light: #ffdfdf;
+    --color3Light: #fff4df;
 
     --blurLevel5p: 5px;
     --blurLevel8p: 8px;
@@ -68,19 +73,18 @@
 }
 
 .app__pageContainer {
+    background: var(--colorGray8);
+
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
 
     width: 700px;
-    height: calc(100% - 100px - 20px);
+    height: max-content;
 
     padding: 10px 0;
-    margin: 0;
-
-    border: 2px solid var(--colorGray7);
-    border-radius: var(--borderRadius6);
+    margin: 100px 0 0 0;
 
     overflow-x: visible;
     overflow-y: auto;

@@ -1,0 +1,44 @@
+.input {
+    color: var(--colorBlack);
+
+    border: none;
+    outline: none;
+}
+
+.input::placeholder {
+    color: var(--colorGray4);
+
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.signInSignUpForm {
+    background: var(--colorGray8);
+
+    width: calc(100% - 10px);
+    height: max-content;
+
+    padding: 5px 5px;
+    margin: 0;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    border-radius: var(--borderRadius3);
+}
+
+.searchInputNavigation {
+    background: var(--colorWhite);
+
+    width: calc(100% - 40px - 10px);
+    height: calc(100% - 10px);
+
+    padding: 5px 5px;
+    margin: 0;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    border: none;
+    border-radius: 0;
+}

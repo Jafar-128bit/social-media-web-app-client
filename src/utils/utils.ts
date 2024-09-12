@@ -17,7 +17,7 @@ export const readFileAsDataURL = (file: File): Promise<string> => {
         reader.readAsDataURL(file);
     });
 };
-export const fetchProfileData = (searchTerm: string): Promise<ProfileDataType[]> => {
+export const fetchProfileDataArray = (searchTerm: string): Promise<ProfileDataType[]> => {
     return new Promise<ProfileDataType[]>((resolve, reject) => {
         setTimeout(() => {
             const filteredData = profileData.filter((profile) =>
@@ -50,7 +50,6 @@ export const fetchHashtagData = (searchTerm: string): Promise<HashtagWithCounts[
         }, 500);
     });
 };
-
 export const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
     const options: Intl.DateTimeFormatOptions = {
@@ -58,4 +57,4 @@ export const formatDate = (dateString: string): string => {
     };
 
     return date.toLocaleDateString('en-US', options);
-}
+};

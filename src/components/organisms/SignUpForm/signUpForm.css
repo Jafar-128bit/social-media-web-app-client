@@ -1,0 +1,21 @@
+.signUpForm {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    gap: 10px;
+
+    width: 100%;
+    height: calc(100% - 15%);
+}
+
+.signUpForm__inputFieldContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    gap: 10px;
+
+    width: 100%;
+    height: calc(100% - 15%);
+}

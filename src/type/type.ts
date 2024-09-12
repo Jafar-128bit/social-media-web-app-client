@@ -1,4 +1,42 @@
-import {JSX} from 'react';
+import {JSX, RefObject} from 'react';
+import {AxiosRequestConfig} from "axios";
+
+export interface ButtonType {
+    handleCallback: () => void;
+    buttonName: string;
+    buttonType: "submit" | "reset" | "button" | undefined;
+    buttonStyle: string;
+}
+
+export interface ImageButtonType {
+    handleCallback: () => void;
+    ButtonImage: JSX.Element;
+    isShowBadge: boolean
+    badgeText?: string;
+    imageButtonStyle?: string;
+    buttonRef?: RefObject<HTMLButtonElement>;
+}
+
+export interface SingInFormValues {
+    username: string;
+    password: string;
+}
+
+export interface SingUpFormValues {
+    firstName: string;
+    lastName: string;
+    username: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+}
+
+export interface UseApiProps<T> {
+    endpoint: string;
+    token?: string;
+    options?: AxiosRequestConfig;
+    defaultData?: T;
+}
 
 export interface NavbarOptionDataType {
     navName: string;
@@ -28,6 +66,22 @@ export interface PopUpType {
     actionState?: any | AddCommentActionStateType | AddRepostActionStateType | undefined;
 }
 
+export interface GifAttachmentType {
+    gif: GifFileType;
+    altText: string;
+}
+
+export interface PostMenuData {
+    title: string;
+    type: "normal" | "alert";
+    action: ((actionType: string) => void) | null;
+}
+
+export interface HashtagWithCounts {
+    hashtag_text: string;
+    hashtag_useCounts: number;
+}
+
 export interface Attachment {
     src: string;
     alt?: string;
@@ -45,17 +99,6 @@ export interface GifFileType {
     height: number;
     size: number;
     url: string;
-}
-
-export interface GifAttachmentType {
-    gif: GifFileType;
-    altText: string;
-}
-
-export interface PostMenuData {
-    title: string;
-    type: "normal" | "alert";
-    action: ((actionType: string) => void) | null;
 }
 
 export interface ProfileDataType {
@@ -82,20 +125,22 @@ export interface HashtagDataType {
     hashtag_time_stamp: string;
 }
 
-export interface HashtagWithCounts {
-    hashtag_text: string;
-    hashtag_useCounts: number;
-}
-
 export interface PostType {
     postId?: number;
     profileId: number;
     timestamp: string;
     content: string;
     likeIds: number[];
-    comments: CommentType[];
+    comments: TopLevelCommentType[];
     isRepost: boolean;
     originalPostId?: number;
+    attachments?: AttachmentType[];
+}
+
+export interface AttachmentType {
+    attachmentId: number;
+    type: 'image' | 'gif' | 'video';
+    url: string;
 }
 
 export interface CommentType {
@@ -104,5 +149,8 @@ export interface CommentType {
     timestamp: string;
     content: string;
     likeIds: number[];
-    replies?: CommentType[];
+}
+
+export interface TopLevelCommentType extends CommentType {
+    replies: CommentType[];
 }

@@ -16,7 +16,6 @@ import {GifFileType} from "../../type/type";
 
 const gf = new GiphyFetch('Ykl4Oepbeo5FKXDcX8oImZj7blSh5mBS');
 
-
 const AddGifMenu = () => {
     const dispatch = useDispatch();
     const location = useLocation().pathname.split("/")[1];

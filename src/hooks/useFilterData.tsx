@@ -1,6 +1,6 @@
 import {useState, useEffect, useCallback} from 'react';
 import {HashtagWithCounts, ProfileDataType} from "../type/type";
-import {fetchProfileData, fetchHashtagData} from "../utils/utils";
+import {fetchProfileDataArray, fetchHashtagData} from "../utils/utils";
 
 const useFilterData = (searchWord: string, returnData: "hashTag" | "profile") => {
     const [filteredProfileData, setFilteredProfileData] = useState<ProfileDataType[]>([]);
@@ -12,7 +12,7 @@ const useFilterData = (searchWord: string, returnData: "hashTag" | "profile") =>
         try {
             setLoading(true);
             if (returnData === "profile") {
-                const data = await fetchProfileData(term);
+                const data = await fetchProfileDataArray(term);
                 setFilteredProfileData(data);
             } else {
                 const data = await fetchHashtagData(term);

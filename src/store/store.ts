@@ -6,7 +6,7 @@ import rootReducer from './reducers';
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['popUpMenuState', 'profileInfoSlice'],
+    whitelist: ['authTokenSlices'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

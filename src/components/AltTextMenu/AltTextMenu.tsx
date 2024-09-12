@@ -3,7 +3,6 @@ import './altTextMenu.css';
 
 import {motion} from 'framer-motion';
 import React, {useState} from "react";
-import {updateAltText} from "../../store/slices/attachmentsSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {togglePopUp} from "../../store/slices/popUpSlices";
 
@@ -23,7 +22,6 @@ const AltTextMenu = ({fileId}: { fileId: string }) => {
         event.target.style.height = event.target.scrollHeight + 'px';
     };
     const handelSetAltText = () => {
-        if (altText !== "") dispatch(updateAltText({fileId: fileId, alt: altText}));
         setAltText("");
         dispatch(togglePopUp({actionName: "addCommentMenu", actionArgument: false}));
         dispatch(togglePopUp({actionName: "addAltTextMenu", actionArgument: true, actionState: undefined}));

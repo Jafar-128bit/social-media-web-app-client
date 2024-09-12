@@ -1,0 +1,38 @@
+.buttonContainer {
+    display: flex;
+    align-items: center;
+}
+
+.signUpButtonContainer {
+    justify-content: space-between;
+    flex-direction: row;
+
+    width: 90%;
+    height: 15%;
+}
+
+.signInButtonContainer {
+    justify-content: space-between;
+    flex-direction: row;
+
+    width: 90%;
+    height: 20%;
+}
+
+.navigationButtonContainer {
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 15px;
+
+    width: max-content;
+    height: max-content;
+}
+
+.accountMenuButtonContainer {
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 10px;
+
+    width: 100%;
+    height: 100%;
+}

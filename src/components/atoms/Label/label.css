@@ -1,0 +1,12 @@
+.label {
+    color: var(--colorGray2);
+
+    width: 100%;
+    height: max-content;
+
+    padding: 0;
+    margin: 0;
+
+    font-size: 14px;
+    font-weight: 500;
+}

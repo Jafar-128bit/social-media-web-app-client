@@ -1,0 +1,33 @@
+.navigationTab {
+    background: var(--colorGray8);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    width: 100%;
+    height: 100px;
+
+    position: absolute;
+    top: 0;
+}
+
+.navigationTab__buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: max-content;
+    height: max-content;
+}
+
+.leftSide {
+    position: absolute;
+    left: 50px;
+}
+
+.rightSide {
+    position: absolute;
+    right: 50px;
+}

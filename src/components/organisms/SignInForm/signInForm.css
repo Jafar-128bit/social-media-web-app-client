@@ -1,0 +1,21 @@
+.signInForm {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 10px;
+
+    width: 100%;
+    height: calc(100% - 20%);
+}
+
+.signInForm__inputFieldContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    gap: 10px;
+
+    width: 100%;
+    height: calc(100% - 50%);
+}

@@ -1,0 +1,12 @@
+.inputField {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+
+    width: 90%;
+    height: max-content;
+
+    position: relative;
+}

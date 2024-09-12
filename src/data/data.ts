@@ -166,7 +166,6 @@ export const profileData: ProfileDataType[] = [
     },
 ];
 
-
 const generateHashtags = (): HashtagDataType[] => {
     const hashtags: string[] = [
         'love', 'instagood', 'instagram', 'fashion', 'photooftheday', 'art', 'photography', 'beautiful', 'nature', 'picoftheday',
