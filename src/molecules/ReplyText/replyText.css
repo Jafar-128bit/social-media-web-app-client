@@ -1,0 +1,8 @@
+.replyText {
+    padding: 0;
+    margin: 0;
+}
+
+.replyText__gap {
+    margin: 0 5px;
+}

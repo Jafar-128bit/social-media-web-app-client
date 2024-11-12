@@ -1,0 +1,16 @@
+.linkText {
+    color: var(--colorBlack);
+
+    width: max-content;
+    height: max-content;
+
+    padding: 0;
+    margin: 0;
+
+    text-decoration: none;
+}
+
+.linkText:hover {
+    transition: all 0.15s ease-in-out;
+    text-decoration: underline;
+}

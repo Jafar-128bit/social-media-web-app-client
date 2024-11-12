@@ -6,7 +6,7 @@ import rootReducer from './reducers';
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['authTokenSlices'],
+    whitelist: ['authTokenSlices', 'widgetSlices', 'authProfileSlice'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

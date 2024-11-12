@@ -1,0 +1,46 @@
+.sliderDotIndicator {
+    background: var(--colorBlackOpacity05);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 7px;
+
+    width: max-content;
+    height: 20px;
+
+    padding: 0 7px;
+
+    border-radius: calc(20px / 2);
+
+    overflow: hidden;
+    overflow-x: auto;
+    z-index: 2;
+}
+
+.sliderDotIndicator:hover {
+    transition: all 250ms ease-in;
+    background: var(--colorBlackOpacity40);
+}
+
+.sliderDotIndicator_dot {
+    background: var(--colorWhiteOpacity60);
+    flex-shrink: 0;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+.sliderDotIndicator_dot:hover {
+    background: var(--colorWhite);
+
+    width: 10px;
+    height: 10px;
+
+    transition: all 250ms ease-in;
+}

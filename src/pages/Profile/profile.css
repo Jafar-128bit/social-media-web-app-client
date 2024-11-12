@@ -1,0 +1,43 @@
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 15px;
+
+    width: calc(1000px - 30px);
+    height: calc(100% - 30px);
+
+    padding: 15px;
+}
+
+.profile__titleBar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 100%;
+    height: max-content;
+}
+
+.profile__potListContainer {
+    background: var(--colorWhite);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    flex-shrink: 0;
+
+    width: 100%;
+    min-height: 300px;
+    max-height: 100%;
+
+    border-radius: var(--borderRadius3);
+    box-shadow: var(--shadow2);
+
+    overflow: hidden;
+    overflow-y: auto;
+}

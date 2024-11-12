@@ -1,0 +1,33 @@
+.textPost {
+    display: inline;
+
+    width: 100%;
+    height: max-content;
+
+    padding: 0;
+    margin: 0;
+
+    text-align: justify;
+}
+
+.normalText, .specialWord {
+    color: var(--colorBlack);
+
+    width: max-content;
+    height: max-content;
+
+    padding: 0;
+    margin: 0;
+}
+
+.specialWord {
+    color: var(--color1);
+
+    cursor: pointer;
+
+    transition: all 0.25s ease-in-out;
+}
+
+.specialWord:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,59 @@
+.accountMenu {
+    background: var(--colorWhite);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: calc(200px - 20px);
+    height: max-content;
+
+    padding: 10px;
+
+    border: 1px solid var(--colorGray7);
+    border-radius: var(--borderRadius3);
+    box-shadow: var(--shadow2);
+
+    position: absolute;
+    top: 120px;
+    right: 20px;
+
+    z-index: 3;
+}
+
+.accountMenu__buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: max-content;
+    height: max-content;
+
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+
+    z-index: 2;
+}
+
+.accountMenu__buttonImage {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 10px;
+
+    width: 100%;
+    height: max-content;
+}
+
+.accountMenu__buttonName {
+    color: var(--colorBlack);
+
+    padding: 0;
+    margin: 0;
+
+    font-size: 16px;
+    font-weight: 600;
+}

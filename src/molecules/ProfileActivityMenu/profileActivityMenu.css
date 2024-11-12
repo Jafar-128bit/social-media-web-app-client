@@ -1,0 +1,25 @@
+.profileActivityMenu {
+    background: var(--colorWhite);
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 10px;
+
+    width: calc(380px - 30px);
+    height: max-content;
+
+    padding: 15px;
+
+    box-shadow: var(--shadow1);
+    border-radius: var(--borderRadius4);
+
+    position: absolute;
+    left: 0;
+    top: 565px;
+
+    overflow: hidden;
+    overflow-y: auto;
+    z-index: 1;
+}

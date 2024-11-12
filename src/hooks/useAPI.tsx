@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import axios, {AxiosRequestConfig, AxiosError} from 'axios'; // Import axios and types
+import axios, {AxiosRequestConfig, AxiosError} from 'axios';
 
 // Define the custom hook with two generic types:
 // T for the response data type, D for the request data type
@@ -11,7 +11,7 @@ function useAPI<T = unknown, D = unknown>() {
     const fetchData = async (
         url: string,
         method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' = 'GET',
-        data: D,
+        data?: D,
         config?: AxiosRequestConfig
     ) => {
         setLoading(true);
@@ -24,11 +24,11 @@ function useAPI<T = unknown, D = unknown>() {
                 data,
                 headers: {
                     'Content-Type': 'application/json',
-                    ...config?.headers, // Merge custom headers from config, if any
+                    ...config?.headers,
                 },
-                ...config,  // Other Axios config (e.g., params)
+                ...config,
             });
-            setResponse(result.data);  // Set the response data
+            setResponse(result.data);
         } catch (err) {
             const axiosError = err as AxiosError;
             setError(axiosError.message || "Unknown error");

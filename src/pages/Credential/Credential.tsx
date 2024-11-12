@@ -1,6 +1,6 @@
 import './credential.css';
 
-import {SignInTemplate, SignUpTemplate} from '../../components/template/indexTemplate';
+import {SignInTemplate, SignUpTemplate} from '../../template/indexTemplate';
 
 type PropCredential = {
     type: "sign-in" | "sign-up"

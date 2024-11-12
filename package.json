@@ -21,6 +21,7 @@
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.24",
     "axios": "^1.7.4",
+    "client": "file:",
     "draft-js": "^0.11.7",
     "formik": "^2.4.6",
     "framer-motion": "^11.0.25",

@@ -1,0 +1,13 @@
+.videoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 500px;
+    height: max-content;
+
+    position: relative;
+    overflow: hidden;
+}
+

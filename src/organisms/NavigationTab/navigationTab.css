@@ -1,0 +1,30 @@
+.navigationTab {
+    background: var(--colorWhite);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-shrink: 0;
+    gap: 10px;
+
+    width: calc(100% - 20px);
+    height: 65px;
+
+    padding: 0 10px;
+
+    border-radius: var(--borderRadius5);
+    box-shadow: var(--shadow2);
+
+    position: relative;
+    top: 0;
+}
+
+.navigationTab__buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: max-content;
+    height: max-content;
+}

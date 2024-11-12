@@ -1,0 +1,10 @@
+.lText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: justify;
+
+    padding: 0;
+    margin: 0;
+}

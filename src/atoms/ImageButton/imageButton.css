@@ -1,0 +1,133 @@
+.imageButton {
+    background: transparent;
+    color: var(--colorBlack);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    height: 50px;
+
+    padding: 5px;
+    margin: 0;
+
+    border: none;
+    outline: none;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    position: relative;
+}
+
+.accountMenuStyleButton {
+    color: var(--colorBlack);
+
+    flex-direction: row;
+    flex-shrink: 0;
+
+    width: 100%;
+    height: 45px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    border-radius: var(--borderRadius3);
+}
+
+.accountMenuStyleButton:hover {
+    background: var(--colorGray7);
+}
+
+.addPostMenuButton {
+    background: transparent;
+
+    flex-direction: row;
+    flex-shrink: 0;
+
+    width: max-content;
+    height: max-content;
+
+    padding: 2px;
+
+    border: none;
+    border-radius: var(--borderRadius2);
+
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.profileSettingButton {
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid var(--colorGray7);
+    border-radius: 50%;
+}
+
+.profileSettingButton:hover {
+    background: var(--colorBlack);
+    transition: all 0.15s ease-in-out;
+}
+
+.mainProfileCardMinimizeBtnStyle {
+    background: var(--colorWhite);
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: var(--borderRadius2);
+
+    position: absolute;
+    top: 0;
+    right: -40px;
+
+    z-index: 2;
+}
+
+.mainProfileCardMinimizeBtnStyleHideByPosition {
+    transition: all 0.15s ease-in-out;
+
+    top: 0;
+    right: 45px;
+}
+
+.postContainerBtnStyle {
+    width: 25px;
+    height: 15px;
+
+    z-index: 0;
+}
+
+.addCommentButton {
+    width: 45px;
+    height: 45px;
+
+    border-radius: var(--borderRadius4);
+}
+
+.addCommentButton:hover {
+    background: var(--colorGray8);
+}
+
+.imageSliderButtons {
+    background: var(--colorWhiteOpacity70);
+
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.disableImageButton {
+    opacity: 0;
+    cursor: default;
+
+    transition: opacity 0.25s ease-in-out;
+}
