@@ -12,6 +12,7 @@ import LText from "./LText/LText";
 import LinkText from "./LinkText/LinkText";
 import TransparentGradientScreen from "./TransparentGradientScreen/TransparentGradientScreen";
 import HText from "./HText/HText";
+import VideoSliderInput from "./VideoSliderInput/VideoSliderInput";
 
 export {
     Button,
@@ -28,4 +29,5 @@ export {
     LinkText,
     TransparentGradientScreen,
     HText,
+    VideoSliderInput
 };

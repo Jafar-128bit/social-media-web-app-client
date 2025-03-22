@@ -1,10 +1,7 @@
-import './postContainerTemplate.css';
 import {ButtonType, FilteredPostData, ImageButtonType, PostContentType} from "../../type/type";
 
 import React, {useEffect, useMemo, useState, Suspense} from "react";
 import useHover from "../../hooks/useHover";
-
-// import {PostContainer} from "../../organisms/indexOrganisms";
 
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
@@ -201,14 +198,16 @@ const PostContainerTemplate = ({postData}: Prop) => {
     };
 
     return <>
-        <PostContainer
-            normalButtonMap={normalButtonMap}
-            postMenuButton={postMenuButton}
-            postActionButton={postActionButton}
-            saveButton={saveButton}
-            postType={postType}
-            postData={postData}
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+            <PostContainer
+                normalButtonMap={normalButtonMap}
+                postMenuButton={postMenuButton}
+                postActionButton={postActionButton}
+                saveButton={saveButton}
+                postType={postType}
+                postData={postData}
+            />
+        </Suspense>
     </>
 };
 

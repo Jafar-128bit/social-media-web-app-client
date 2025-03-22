@@ -235,6 +235,11 @@ export interface FilteredPostData extends PostType{
     }
 }
 
+export interface VideoSources {
+    src: string;
+    type: string;
+}
+
 export interface ReplyType {
     commentId: number;
     profileId: number;

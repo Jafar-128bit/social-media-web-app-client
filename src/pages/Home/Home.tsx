@@ -75,7 +75,7 @@ const Home = () => {
                         return null;
                     }).filter(Boolean) as FilteredPostData[];
                     setFilteredPostData(modifiedPostData);
-                    console.log("");
+                    console.log("need to update"); //this one <--
                 } else {
                     if (postError) console.error('Error fetching static post data:', postError);
                     if (profileError) console.error('Error fetching static profile data:', profileError);

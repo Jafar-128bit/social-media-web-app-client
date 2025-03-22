@@ -4,7 +4,7 @@ import {ButtonType, FilteredPostData, ImageButtonType, PostContentType} from "..
 import {ButtonContainer, TextPost} from "../../molecules/IndexMolecules";
 import {
     MultiPictureContainerTemplate,
-    PictureContainerTemplate,
+    PictureContainerTemplate, VideoContainerTemplate,
 } from "../../template/indexTemplate";
 
 type Prop = {
@@ -77,6 +77,7 @@ const PostContainer = ({
                     <MultiPictureContainerTemplate pictureData={postData.attachments}/>
                 )
             )}
+            {postType === "video" && postData.attachments && <VideoContainerTemplate videoData={postData.attachments}/>}
         </section>
         <section className="postContainer__section_3">
             <section className="postContainer__section_3_1 postActionsButton">
