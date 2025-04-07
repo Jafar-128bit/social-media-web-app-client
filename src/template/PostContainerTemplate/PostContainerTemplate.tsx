@@ -19,6 +19,8 @@ import {determinePostType} from "../../utils/utils";
 import {togglePopUp} from "../../store/slices/popUpSlices";
 import {useDispatch} from "react-redux";
 
+import {SunspotLoaderComponent} from "../../components/LoaderComponent/LoaderComponent";
+
 const PostContainer = React.lazy(() =>
     import('../../organisms/indexOrganisms').then((module) => ({
         default: module.PostContainer,
@@ -198,7 +200,7 @@ const PostContainerTemplate = ({postData}: Prop) => {
     };
 
     return <>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<SunspotLoaderComponent/>}>
             <PostContainer
                 normalButtonMap={normalButtonMap}
                 postMenuButton={postMenuButton}

@@ -75,7 +75,7 @@ const Home = () => {
                         return null;
                     }).filter(Boolean) as FilteredPostData[];
                     setFilteredPostData(modifiedPostData);
-                    console.log("need to update"); //this one <--
+                    console.log("fix this loading err"); /* Jafar */
                 } else {
                     if (postError) console.error('Error fetching static post data:', postError);
                     if (profileError) console.error('Error fetching static profile data:', profileError);
