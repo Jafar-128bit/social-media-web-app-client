@@ -257,3 +257,7 @@ export interface Condition {
     baseColor: string;
     transitionColor: string
 }
+
+export interface AccountSectionDataType {
+
+}

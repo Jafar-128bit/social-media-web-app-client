@@ -7,10 +7,13 @@ import {
     PopupTemplate, ProfileActivityMenuTemplate,
     ProfileInfoCardTemplate,
 } from './template/indexTemplate';
+
 import Home from "./pages/Home/Home";
 import Credential from "./pages/Credential/Credential";
 import Profile from "./pages/Profile/Profile";
 import Test from "./pages/TestPage/Test";
+import AccountSetting from "./pages/AccountSetting/AccountSetting";
+
 import {ProfileDataType} from "./type/type";
 import {useSelector} from "react-redux";
 import {useEffect} from "react";
@@ -45,6 +48,7 @@ const App = () => {
             children: [
                 {path: "/", element: <Home/>,},
                 {path: "/profile", element: <Profile/>,},
+                {path: "/setting", element: <AccountSetting/>,},
             ]
         },
         {

@@ -190,8 +190,7 @@ const NavigationTemplate = () => {
     ], [hoverData]);
     const accountMenuButtonData: ImageButtonType[] = useMemo((): ImageButtonType[] => [
         {
-            handleCallback: () => {
-            },
+            handleCallback: () => handleNavigate("/setting"),
             ButtonImage: <ButtonImage
                 Image={<SettingsOutlinedIcon style={{
                     ...iconStyleAccountMenu,

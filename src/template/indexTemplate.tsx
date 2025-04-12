@@ -18,6 +18,7 @@ import ProfileActivityMenuTemplate from "./ProfileActivityMenuTemplate/ProfileAc
 import MultiPictureContainerTemplate from "./MultiPictureContainerTemplate/MultiPictureContainerTemplate";
 import PictureContainerTemplate from "./PictureContainerTemplate/PictureContainerTemplate";
 import VideoContainerTemplate from "./VideoContainerTemplate/VideoContainerTemplate";
+import AccountSettingSectionTemplates from "./AccountSettingSectionTemplates/AccountSettingSectionTemplates";
 
 export {
     SignUpTemplate,
@@ -39,5 +40,6 @@ export {
     ProfileActivityMenuTemplate,
     MultiPictureContainerTemplate,
     PictureContainerTemplate,
-    VideoContainerTemplate
+    VideoContainerTemplate,
+    AccountSettingSectionTemplates
 };

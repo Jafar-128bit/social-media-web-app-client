@@ -15,6 +15,7 @@ import ProfileInfoCard from "./ProfileInfoCard/ProfileInfoCard";
 import PostTypeSelectorBar from "./PostTypeSelectorBar/PostTypeSelectorBar";
 import MultiPictureContainer from "./MultiPictureContainer/MultiPictureContainer";
 import VideoContainer from "./VideoContainer/VideoContainer";
+import AccountSettingSection from "./AccountSettingSection/AccountSettingSection";
 
 export {
     SignUpForm,
@@ -34,4 +35,5 @@ export {
     PostTypeSelectorBar,
     MultiPictureContainer,
     VideoContainer,
+    AccountSettingSection,
 };
