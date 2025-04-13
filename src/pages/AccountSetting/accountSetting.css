@@ -13,10 +13,13 @@
 
     border-radius: var(--borderRadius3);
     box-shadow: var(--shadow2);
+
+    overflow: hidden;
+    overflow-y: auto;
 }
 
 .accountSettingPage__titleContainer {
-  display: flex;
+    display: flex;
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;

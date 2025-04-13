@@ -259,5 +259,5 @@ export interface Condition {
 }
 
 export interface AccountSectionDataType {
-
+    sectionName: string;
 }

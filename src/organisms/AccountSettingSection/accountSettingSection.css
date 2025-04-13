@@ -3,8 +3,10 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    flex-shrink: 0;
+    gap: 10px;
 
-    width: 100%;
+    width: calc(100% - 10px);
     height: max-content;
 
     padding: 10px 0 0 0;
@@ -13,11 +15,14 @@
 .accountSettingSection__sectionTitle {
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
 
-    width: calc(100% - 20px);
+    width: calc(100% - 10px);
+    min-height: 100px;
     height: max-content;
+
+    padding: 0 10px;
 }
 
 .accountSettingSection__separator {
@@ -26,5 +31,5 @@
 
     padding: 2px 0 0 0;
 
-    border-bottom: 1px solid var(--colorBlack);
+    border-bottom: 2px solid var(--colorGray6);
 }
