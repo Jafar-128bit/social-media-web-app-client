@@ -258,6 +258,11 @@ export interface Condition {
     transitionColor: string
 }
 
+export interface AccountSubSectionDataType {
+    subSectionName: string;
+}
+
 export interface AccountSectionDataType {
     sectionName: string;
+    subSection: AccountSubSectionDataType[];
 }
