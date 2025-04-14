@@ -28,7 +28,7 @@ const AccountSettingSectionTemplates: React.FunctionComponent = () => {
                 {subSectionName: "Account Privacy"},
                 {subSectionName: "Activity Status"},
                 {subSectionName: "Tagging Controls"},
-                {subSectionName: "POst Visibility Settings"},
+                {subSectionName: "Post Visibility Settings"},
             ]
         },
         {
